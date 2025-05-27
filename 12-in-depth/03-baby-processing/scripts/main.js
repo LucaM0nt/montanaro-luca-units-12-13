@@ -79,12 +79,12 @@ const babies = [
 /**
  * Randomizes the order of elements in an array.
  * @function randomiseArray
- * @param {Array<any>} array - The array to randomize (will be mutated).
+ * @param {Array<any>} array - The array to randomize (will not mutate the original).
  * @returns {Array<any>} A new array with the elements in random order.
  */
 function randomiseArray(array) {
+  // Create a shallow copy to avoid mutating the original array
   const result = [];
-  // Copy the array to avoid mutating the original
   let arrCopy = array.slice();
   while (arrCopy.length > 0) {
     const idx = Math.floor(Math.random() * arrCopy.length);
@@ -103,6 +103,7 @@ function randomiseArray(array) {
  * getBabyOutfit(baby);
  */
 function getBabyOutfit(baby) {
+  // Get all clothing items from the outfit object and join them in a readable string
   const babyClothes = Object.values(baby.outfit);
   return `${baby.name} is wearing a ${babyClothes.join(" and ")}`;
 }
@@ -117,14 +118,18 @@ function getBabyOutfit(baby) {
  * feedBaby(baby);
  */
 function feedBaby(baby) {
-  const babyFood = baby.favoriteFoods.slice(); // Copy to avoid mutation
+  // Copy favoriteFoods to avoid mutation, randomize, and join for output
+  const babyFood = baby.favoriteFoods.slice();
   const randomBabyFood = randomiseArray(babyFood);
   return `${baby.name} is eating ${randomBabyFood.join(" and ")}`;
 }
 
 // Run both functions on all babies and print the results
 babies.forEach((baby) => {
+  // Print the baby's outfit description
   console.log(getBabyOutfit(baby));
+  // Print the randomized food description
   console.log(feedBaby(baby));
+  // Print a blank line for readability
   console.log("\n");
 });
