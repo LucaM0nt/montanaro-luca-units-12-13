@@ -2,7 +2,7 @@
  * @file main.js
  * @description Transforms an array of noise strings into a new array with specific capitalization and punctuation patterns.
  * @author Luca Montanaro
- * @date April, 2025
+ * @date May, 2025
  * 
  * @remarks
  * This script takes an array of noise words and, for each word, generates several variants:

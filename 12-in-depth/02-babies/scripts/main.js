@@ -2,7 +2,7 @@
  * @file main.js
  * @description Demonstrates object and array manipulation by modeling babies, their attributes, and outfits.
  * @author Luca Montanaro
- * @date April, 2025
+ * @date May, 2025
  *
  * @remarks
  * This script creates an array of baby objects, each with properties such as name, age in months, noises,
@@ -103,14 +103,12 @@ babies = [...babies, baby5]; // Add baby5 at the end using spread operator
  * @param {Array<Baby>} babiesArr - The array of baby objects to print.
  */
 function printBabies(babiesArr) {
-  babiesArr.forEach((baby) => {
-    for (baby of babies) {
-      for (key in baby) {
-        console.log(key + ": " + baby[key]);
-      }
-      console.log("\n"); 
-    } 
-  });
+  for (const baby of babiesArr) {
+    for (const key in baby) {
+      console.log(`${key}: ${baby[key]}`);
+    }
+    console.log("\n");
+  }
 }
 
 // Print babies before adding outfits
