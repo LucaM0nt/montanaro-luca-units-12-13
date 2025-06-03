@@ -81,9 +81,8 @@ function myIndexOf(array, value) {
   array.reduce((_, currElement, index) => {
     currElement === value ? newArray.push(index) : newArray.push(-1);
   }, 0);
-  return newArray.filter((element) => element !== -1)[0]
-    ? newArray.filter((element) => element !== -1)[0]
-    : -1;
+  const primoValido = newArray.find(element => element !== -1);
+  return primoValido !== undefined ? primoValido : -1;
 }
 
 console.log("\nthis is the output of the myIndexOf function");
