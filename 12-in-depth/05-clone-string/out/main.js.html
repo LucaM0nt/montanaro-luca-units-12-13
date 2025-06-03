@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>main.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#cloneStrings">cloneStrings</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">main.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file main.js
+ * @description Clones only string properties from an object, including nested objects and arrays, omitting all other types.
+ * @author Luca Montanaro
+ * @date May, 2025
+ *
+ * @remarks
+ * This script defines a function that recursively clones only the string properties of an object.
+ * It is tested on a sample employee object. Non-string properties (numbers, booleans, Dates, etc.) are omitted.
+ */
+
+/**
+ * @typedef {Object} Employee
+ * @property {string} name
+ * @property {string} email
+ * @property {string} address
+ * @property {string} bio
+ * @property {boolean} active
+ * @property {number} salary
+ * @property {Date} birth
+ * @property {Object} bankInformation
+ * @property {string} bankInformation.amount
+ * @property {Date} bankInformation.date
+ * @property {string} bankInformation.business
+ * @property {string} bankInformation.name
+ * @property {string} bankInformation.type
+ * @property {string} bankInformation.account
+ */
+const employee = {
+  name: "Green Mueller",
+  email: "Rigoberto_Muller47@yahoo.com",
+  address: "575 Aiden Forks",
+  bio: "Tenetur voluptatem odit labore et voluptatem vel qui placeat sit.",
+  active: false,
+  salary: 37993,
+  birth: new Date(
+    "Sun Apr 18 1965 13:38:00 GMT+0200 (W. Europe Daylight Time)"
+  ),
+  bankInformation: {
+    amount: "802.04",
+    date: new Date(
+      "Thu Feb 02 2012 00:00:00 GMT+0100 (W. Europe Standard Time)"
+    ),
+    business: "Bernhard, Kuhn and Stehr",
+    name: "Investment Account 8624",
+    type: "payment",
+    account: "34889694",
+  },
+};
+
+/**
+ * Recursively clones only string properties from an object.
+ * Ignores all other property types (numbers, booleans, Dates, etc.).
+ * @function cloneStrings
+ * @param {Object} object - The object to clone.
+ * @returns {Object} A new object containing only string properties.
+ */
+function cloneStrings(object) {
+  const newObject = {};
+
+  for (let property in object) {
+    // If the property is an object (and not null), handle accordingly
+    if (typeof object[property] === "object" &amp;&amp; object[property] !== null) {
+      // Skip Date objects
+      if (object[property] instanceof Date) {
+        continue;
+      }
+      // If it's an array, recursively clone string/object items
+      else if (Array.isArray(object[property])) {
+        newObject[property] = object[property]
+          .map((item) => {
+            // Recursively clone if object, or keep if string
+            if (typeof item === "object" &amp;&amp; item !== null) {
+              return cloneStrings(item);
+            } else if (typeof item === "string") {
+              return item;
+            } // Ignore non-string, non-object items / therefore no final else statemente needed
+          })
+          .filter((item) => item !== undefined);
+        // Remove property if array is empty
+        if (newObject[property].length === 0) delete newObject[property];
+      }
+      // Otherwise, recursively clone nested objects
+      else {
+        const nested = cloneStrings(object[property]);
+        // Only add if nested object has string properties
+        if (Object.keys(nested).length > 0) {
+          newObject[property] = nested;
+        }
+      }
+    } else {
+      // Only clone string properties
+      if (typeof object[property] === "string") {
+        newObject[property] = object[property];
+      }
+    }
+  }
+
+  return newObject;
+}
+
+console.log(cloneStrings(employee));
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Jun 03 2025 09:21:04 GMT+0200 (Ora legale dell’Europa centrale) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

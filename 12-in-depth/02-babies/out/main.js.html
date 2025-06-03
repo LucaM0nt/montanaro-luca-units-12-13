@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>main.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#assignOutfits">assignOutfits</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#babies">babies</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfit1">outfit1</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfit2">outfit2</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfit3">outfit3</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfit4">outfit4</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfit5">outfit5</a></span></li><li class="nav-item"><span class="nav-item-type type-member">M</span><span class="nav-item-name"><a href="global.html#outfits">outfits</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#printBabies">printBabies</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">main.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file main.js
+ * @description Demonstrates object and array manipulation by modeling babies, their attributes, and outfits.
+ * @author Luca Montanaro
+ * @date May, 2025
+ *
+ * @remarks
+ * This script creates an array of baby objects, each with properties such as name, age in months, noises,
+ * and favorite foods.
+ * Babies are added to the array using different array methods. The script then prints each baby's properties.
+ * Afterwards, an outfit object is assigned to each baby, and the babies are printed again with their outfits.
+ */
+
+// Create an empty array of babies
+/**
+ * @type {Array&lt;Object>}
+ * @description Array to store baby objects.
+ */
+let babies = [];
+
+// Create 5 baby objects with required properties
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Object} [outfit] - Baby's outfit (added later)
+ */
+const baby1 = {
+  name: "Luna",
+  months: 6,
+  noises: ["goo", "ga", "babble"],
+  favoriteFoods: ["mashed banana", "rice cereal"],
+};
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Object} [outfit] - Baby's outfit (added later)
+ */
+const baby2 = {
+  name: "Max",
+  months: 9,
+  noises: ["giggle", "coo", "da-da"],
+  favoriteFoods: ["pureed carrots", "apple sauce"],
+};
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Object} [outfit] - Baby's outfit (added later)
+ */
+const baby3 = {
+  name: "Glory",
+  months: 12,
+  noises: ["ma-ma", "la-la", "ba"],
+  favoriteFoods: ["ramen", "banana"],
+};
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Object} [outfit] - Baby's outfit (added later)
+ */
+const baby4 = {
+  name: "Leo",
+  months: 8,
+  noises: ["hee", "ahh", "gurgle"],
+  favoriteFoods: ["pureed peas", "avocado"],
+};
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Object} [outfit] - Baby's outfit (added later)
+ */
+const baby5 = {
+  name: "Badr Jr.",
+  months: 2,
+  noises: ["cheee", "lol", "bruh"],
+  favoriteFoods: ["hamburger", "pizza"],
+};
+
+// Add 5 babies to the array using as many different ways as possible
+babies.push(baby1); // Add baby1 at the end using push
+babies.splice(1, 0, baby2); // Insert baby2 at index 1 using splice
+babies.unshift(baby3); // Add baby3 at the start using unshift
+babies[3] = baby4; // Assign baby4 at index 3 using direct assignment
+babies = [...babies, baby5]; // Add baby5 at the end using spread operator
+
+/**
+ * @function printBabies
+ * @description Iterates through the babies array and prints each key-value pair for every baby.
+ * @param {Array&lt;Baby>} babiesArr - The array of baby objects to print.
+ */
+function printBabies(babiesArr) {
+  for (const baby of babiesArr) {
+    for (const key in baby) {
+      console.log(`${key}: ${baby[key]}`);
+    }
+    console.log("\n");
+  }
+}
+
+// Print babies before adding outfits
+printBabies(babies);
+
+/**
+ * @type {Object}
+ * @property {string} shirt
+ * @property {string} pants
+ * @property {string} shoes
+ */
+const outfit1 = {
+  shirt: "blue t-shirt",
+  pants: "black jeans",
+  shoes: "white sneakers",
+};
+/**
+ * @type {Object}
+ * @property {string} jacket
+ * @property {string} tShirt
+ * @property {string} boots
+ */
+const outfit2 = {
+  jacket: "green bomber",
+  tShirt: "white crew-neck",
+  boots: "brown leather boots",
+};
+/**
+ * @type {Object}
+ * @property {string} hoodie
+ * @property {string} joggers
+ * @property {string} sneakers
+ */
+const outfit3 = {
+  hoodie: "gray zip-up hoodie",
+  joggers: "navy sweatpants",
+  sneakers: "black running shoes",
+};
+/**
+ * @type {Object}
+ * @property {string} blouse
+ * @property {string} skirt
+ * @property {string} heels
+ */
+const outfit4 = {
+  blouse: "red silk blouse",
+  skirt: "plaid mini skirt",
+  heels: "black pumps",
+};
+/**
+ * @type {Object}
+ * @property {string} vest
+ * @property {string} shirt
+ * @property {string} trousers
+ */
+const outfit5 = {
+  vest: "beige knit vest",
+  shirt: "striped long-sleeve",
+  trousers: "dark khakis",
+};
+
+/**
+ * @type {Array&lt;Object>}
+ * @description Array of outfit objects to assign to babies.
+ */
+const outfits = [outfit1, outfit2, outfit3, outfit4, outfit5];
+
+/**
+ * @function assignOutfits
+ * @description Assigns an outfit to each baby in the babies array.
+ * @param {Array&lt;Baby>} babiesArr - The array of baby objects.
+ * @param {Array&lt;Outfit>} outfitsArr - The array of outfit objects.
+ */
+function assignOutfits(babiesArr, outfitsArr) {
+  babiesArr.forEach((baby, i) => {
+    baby.outfit = outfitsArr[i];
+  });
+}
+
+// Assign outfits to babies
+assignOutfits(babies, outfits);
+
+console.log(babies);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Jun 03 2025 09:21:02 GMT+0200 (Ora legale dell’Europa centrale) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

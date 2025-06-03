@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>main.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#feedBaby">feedBaby</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getBabyOutfit">getBabyOutfit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#randomiseArray">randomiseArray</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">main.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file main.js
+ * @description Demonstrates object and array manipulation by modeling babies, their outfits, and feeding them with randomized favorite foods.
+ * @author Luca Montanaro
+ * @date May, 2025
+ *
+ * @remarks
+ * This script defines an array of baby objects, each with properties such as name, age in months, noises, favorite foods, and outfit.
+ * It provides functions to describe a baby's outfit and to simulate feeding a baby with their favorite foods in random order.
+ * Both functions are run for each baby and the results are printed to the console.
+ */
+
+/**
+ * @typedef {Object} Baby
+ * @property {string} name - Baby's name
+ * @property {number} months - Baby's age in months
+ * @property {Array&lt;string>} noises - Array of noises the baby makes
+ * @property {Array&lt;string>} favoriteFoods - Array of baby's favorite foods
+ * @property {Outfit} outfit - Baby's outfit
+ */
+const babies = [
+  {
+    name: "Glory",
+    months: 12,
+    noises: ["ma-ma", "la-la", "ba"],
+    favoriteFoods: ["ramen", "banana", "yogurt"],
+    outfit: {
+      shirt: "blue t-shirt",
+      pants: "black jeans",
+      shoes: "white sneakers",
+    },
+  },
+  {
+    name: "Luna",
+    months: 6,
+    noises: ["goo", "ga", "babble"],
+    favoriteFoods: ["mashed banana", "rice cereal", "applesauce"],
+    outfit: {
+      jacket: "green bomber",
+      tShirt: "white crew-neck",
+      boots: "brown leather boots",
+    },
+  },
+  {
+    name: "Max",
+    months: 9,
+    noises: ["giggle", "coo", "da-da"],
+    favoriteFoods: ["pureed carrots", "apple sauce", "oatmeal"],
+    outfit: {
+      hoodie: "gray zip-up hoodie",
+      joggers: "navy sweatpants",
+      sneakers: "black running shoes",
+    },
+  },
+  {
+    name: "Leo",
+    months: 8,
+    noises: ["hee", "ahh", "gurgle"],
+    favoriteFoods: ["pureed peas", "avocado", "sweet potato"],
+    outfit: {
+      blouse: "red silk blouse",
+      skirt: "plaid mini skirt",
+      heels: "black pumps",
+    },
+  },
+  {
+    name: "Badr Jr.",
+    months: 2,
+    noises: ["cheee", "lol", "bruh"],
+    favoriteFoods: ["hamburger", "pizza", "milk"],
+    outfit: {
+      vest: "beige knit vest",
+      shirt: "striped long-sleeve",
+      trousers: "dark khakis",
+    },
+  },
+];
+
+/**
+ * Randomizes the order of elements in an array.
+ * @function randomiseArray
+ * @param {Array&lt;any>} array - The array to randomize (will not mutate the original).
+ * @returns {Array&lt;any>} A new array with the elements in random order.
+ */
+function randomiseArray(array) {
+  // Create a shallow copy to avoid mutating the original array
+  const result = [];
+  let arrCopy = array.slice();
+  while (arrCopy.length > 0) {
+    const idx = Math.floor(Math.random() * arrCopy.length);
+    result.push(arrCopy.splice(idx, 1)[0]);
+  }
+  return result;
+}
+
+/**
+ * Returns a string describing the baby's outfit.
+ * @function getBabyOutfit
+ * @param {Baby} baby - The baby object.
+ * @returns {string} Description of the baby's outfit.
+ * @example
+ * // returns "Lyla is wearing a blue shirt and red pants and a green hat"
+ * getBabyOutfit(baby);
+ */
+function getBabyOutfit(baby) {
+  // Get all clothing items from the outfit object and join them in a readable string
+  const babyClothes = Object.values(baby.outfit);
+  return `${baby.name} is wearing a ${babyClothes.join(" and ")}`;
+}
+
+/**
+ * Returns a string describing what the baby is eating, with foods in random order.
+ * @function feedBaby
+ * @param {Baby} baby - The baby object.
+ * @returns {string} Description of what the baby is eating.
+ * @example
+ * // returns "Lyla is eating food3 and food1 and food2"
+ * feedBaby(baby);
+ */
+function feedBaby(baby) {
+  // Copy favoriteFoods to avoid mutation, randomize, and join for output
+  const babyFood = baby.favoriteFoods.slice();
+  const randomBabyFood = randomiseArray(babyFood);
+  return `${baby.name} is eating ${randomBabyFood.join(" and ")}`;
+}
+
+// Run both functions on all babies and print the results
+babies.forEach((baby) => {
+  // Print the baby's outfit description
+  console.log(getBabyOutfit(baby));
+  // Print the randomized food description
+  console.log(feedBaby(baby));
+  // Print a blank line for readability
+  console.log("\n");
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Jun 03 2025 09:21:03 GMT+0200 (Ora legale dell’Europa centrale) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
